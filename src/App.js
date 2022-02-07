@@ -20,6 +20,61 @@ function App() {
     setResult(newResult); 
   }
 
+  function handleFetchProxy(e){
+    // var myHeaders = new Headers();
+
+    // var myInit = { method: 'GET',
+               // headers: myHeaders,
+               // mode: 'no-cors',
+               // cache: 'default' };
+
+    e.preventDefault();
+    let url = "/test";
+    console.log("ZACK");
+    fetch(url)
+    .then(function(result){
+      return result.json();
+    })
+    .then(function(result){
+      console.log(result);
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+}
+
+  function handleFetchNoProxy(e){
+    e.preventDefault();
+    let url = "https://tm-stats-bknd.herokuapp.com/test";
+    console.log("ZACK");
+    fetch(url)
+    .then(function(result){
+      return result.json();
+    })
+    .then(function(result){
+      console.log(result);
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+  }
+
+  function handleFetchLocalNoProxy(e){
+    e.preventDefault();
+    let url = "http://localhost:8080/test";
+    console.log("ZACK");
+    fetch(url)
+    .then(function(result){
+      return result.json();
+    })
+    .then(function(result){
+      console.log(result);
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+  }
+
   return (
     <div className='form'>
       <div className='form-content'>
@@ -30,7 +85,7 @@ function App() {
             <div>Your division is:{result}</div>
           )}
         </form>
-        
+        <button type="button" onClick={handleFetchNoProxy}>fetch</button>
       </div>
     </div>
     
